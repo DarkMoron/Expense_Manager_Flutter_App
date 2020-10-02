@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
     TxnDetail(
       title: "Casio Watch",
       price: 99,
-      date: DateTime.now().subtract(Duration(days: 2)),
+      date: DateTime.now().subtract(Duration(days: 3)),
       id: DateTime.now().toString(),
     ),
     // TxnDetail(
@@ -44,8 +44,8 @@ class _MyAppState extends State<MyApp> {
     final tmpTxn = TxnDetail(
         title: txnTitle,
         price: txnPrice,
-        date: DateTime.now(),
-        id: DateTime.now().toString());
+        date: DateTime.utc(1991,5,6),
+        id: DateTime.utc(1991,5,6).toString());
 
     setState(() {
       txnList.insert(0, tmpTxn);
@@ -144,7 +144,7 @@ class _MyAppState extends State<MyApp> {
                       builder: (ctx) => Container(
                         margin: EdgeInsets.symmetric(
                           horizontal: 10,
-                          vertical: 15,
+                          vertical: 25,
                         ),
                         width: double.infinity,
                         height: (MediaQuery.of(ctx).size.height -
@@ -161,7 +161,7 @@ class _MyAppState extends State<MyApp> {
                     Builder(
                       builder: (ctxt) => Container(
                           margin: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 15),
+                              horizontal: 10, vertical: 20),
                           height: (MediaQuery.of(ctxt).size.height -
                                   appbar.preferredSize.height -
                                   MediaQuery.of(ctxt).padding.top) *
@@ -186,6 +186,7 @@ class _MyAppState extends State<MyApp> {
               size: 40,
             ),
             onPressed: () => startAddNewTxn(cntxt),
+            onPressed: () => startAddNewTxn(cntxt).exit();
           ),
         ),
       ),
